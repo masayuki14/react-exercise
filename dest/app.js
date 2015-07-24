@@ -7,3 +7,8 @@ var App = React.createClass({displayName: "App",
     );
   }
 });
+
+React.render(
+  React.createElement(App, null),
+  document.getElementById('app-container')
+);
