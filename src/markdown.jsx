@@ -11,12 +11,12 @@ var App = React.createClass({
     },
 
     render: function() {
-        return {
+        return (
             <div>
                 <TextInput onChange={this.updateMarkdown} />
                 <Markdown markdown={this.state.markdown} />
             </div>
-        };
+        );
     }
 });
 
@@ -25,15 +25,15 @@ var TextInput = React.createClass({
         onChange: React.PropTypes.func.isRequired
     },
 
-    _onChange: function() {
+    _onChange: function(e) {
         this.props.onChange(e.target.value);
     },
 
     render: function() {
-        return {
-            <textarea onChange={this.onChange}>
+        return (
+            <textarea onChange={this._onChange} class="input-area">
             </textarea>
-        };
+        );
     }
 });
 
@@ -44,13 +44,13 @@ var Markdown = React.createClass({
 
     render: function() {
         var html = mdparser.toHTML(this.props.markdown);
-        return {
+        return (
             <div dangerouslySetInnerHTML = {{__html:html}}></div>
-        };
+        );
     }
 });
 
 React.render(
-    <App />
-    document.getElementById('app-container');
+    <App />,
+    document.getElementById('app-container')
 );
