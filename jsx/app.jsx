@@ -1,12 +1,12 @@
 var React = require('react');
-var MenuArea = require('./menu.jsx');
+var Menu = require('./menu.jsx');
 
 var App = React.createClass({
   render: function() {
     return (
       <div>
-        <p>Hello, React</p>
-        <MenuArea />
+        <Menu.MenuArea />
+        <Menu.MyAwesomeReactComponent />
       </div>
     );
   }
