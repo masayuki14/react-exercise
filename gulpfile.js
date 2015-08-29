@@ -1,20 +1,53 @@
-var gulp = require('gulp');
-var util = require('gulp-util');
+var gulp       = require('gulp');
+var util       = require('gulp-util');
+var connect    = require('gulp-connect');
 var browserify = require('browserify');
 var reactify   = require('reactify');
+var source     = require('vinyl-source-stream');
+var buffer     = require('vinyl-buffer');
 var watchify   = require('watchify');
+var sourcemaps = require('gulp-sourcemaps');
+//var babelify   = require('babelify');
 
 function errorHandler (err) {
-    util.log(util.colors.red('Error'), err.message);
-    this.end();
+  util.log(util.colors.red('Error'), err.message);
+  this.end();
 }
 
-gulp.task('build', function() {
-    var bundler = watchify(browserify('./src/app.jsx', watchify.args));
-    bundler.transform(reactify);
-    bundler.bundle()
-    .on('error', errorHandler)
-    .pipe(source('app.js'))
-    .pipe(gulp.dest('./dest'));
+var entries = ['./jsx/menu.jsx', './jsx/app.jsx'];
+var bundler = watchify(browserify({ entries: entries, debug: true } , watchify.args));
+bundler.transform(reactify);
 
+gulp.task('connect', function() {
+  connect.server({
+    root: 'public',
+    livereload: true
+  });
 });
+
+gulp.task('reload', function () {
+  gulp.src(['./public/**/*.*', '!./public/**/*.js.map'])
+      .pipe(connect.reload());
+});
+
+gulp.task('build', function () {
+  bundler.bundle()
+      .on('error', errorHandler)
+      .pipe(source('app.js'))
+        .pipe(buffer())
+        .pipe(sourcemaps.init({ loadMaps: true  }))
+        .pipe(sourcemaps.write('./'))
+      .pipe(gulp.dest('./public/js'));
+});
+
+gulp.task('watch-build', function () {
+  gulp.watch(['./jsx/**/*.jsx'], ['build']);
+});
+
+gulp.task('watch', function () {
+  gulp.watch(['./jsx/**/*.jsx'], ['build']);
+  gulp.watch(['./public/**/*.*', '!./public/**/*.js.map'], ['reload']);
+});
+
+gulp.task('default', ['build', 'connect', 'watch']);
+

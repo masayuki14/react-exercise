@@ -1,1 +1,10 @@
-sudo npm install -g react-tools
+# 不要
+#$ sudo npm install -g react-tools
+
+$ jsx --extension jsx src/ dest/
+$ jsx --watch jsx src/ dest/
+
+# browserifyでビルド
+$ sudo install -g browserify
+$ npm install react
+$ npm install reactiry

@@ -10,7 +10,12 @@
     "markdown": "~0.5.0",
     "reactify": "~1.1.1",
     "react": "~0.13.3",
-    "watchify": "~3.3.0"
+    "watchify": "~3.3.0",
+    "babelify": "~6.2.0",
+    "vinyl-source-stream": "~1.1.0",
+    "gulp-sourcemaps": "~1.5.2",
+    "vinyl-buffer": "~1.0.0",
+    "gulp-connect": "~2.2.0"
   },
   "devDependencies": {},
   "scripts": {
