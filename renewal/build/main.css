@@ -1,0 +1,9 @@
+.menu-panel {
+    width: 300px;
+    float: left;
+}
+
+.main-panel {
+    height: 600px;
+    margin-left: 300px;
+}
