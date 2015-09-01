@@ -25,6 +25,8 @@
   "dependencies": {
     "material-ui": ">=0.8",
     "react": ">=0.13",
+    "react-router": "^0.13.3",
+    "react-style": "^0.5.5",
     "react-tap-event-plugin": "^0.1.3"
   }
 }
