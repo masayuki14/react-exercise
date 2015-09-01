@@ -2,10 +2,6 @@ import React      from 'react';
 import Router     from 'react-router';
 import StyleSheet from 'react-style';
 
-import MenuPanel from './menu.jsx';
-import MainPanel from './main_panel.jsx';
-
-
 import { AppBar,
       AppCanvas,
       FontIcon,
