@@ -106,7 +106,7 @@ class Master extends React.Component {
         <AppBar
           title={title}
           zDepth={0}
-          style={{position: 'absolute', top: 0}}/>
+          style={{position: 'fixed', top: 0}}/>
         />
       </div>);
   }
