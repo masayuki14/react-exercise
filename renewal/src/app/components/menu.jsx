@@ -1,17 +1,18 @@
-var React = require('react'),
-    mui = require('material-ui'),
-    ThemeManager = new mui.Styles.ThemeManager(),
-    RaisedButton = mui.RaisedButton,
-    List         = mui.List,
-    ListItem     = mui.ListItem;
+import React from 'react';
+import mui   from 'material-ui';
+
+let ThemeManager = new mui.Styles.ThemeManager();
+
+let RaisedButton = mui.RaisedButton;
+let List         = mui.List;
+let ListItem     = mui.ListItem;
 
 // Menu Component
-// MenuArea
 //   - BasicMenu
 //   - LogMenu
 //   - DataMenu
 //   - OtherMenu
-var MenuArea = React.createClass({
+export default React.createClass({
 
   childContextTypes: {
     muiTheme: React.PropTypes.object
@@ -25,7 +26,7 @@ var MenuArea = React.createClass({
 
   render: function() {
     return (
-      <div className='menu-area'>
+      <div className='menu-panel'>
         <BasicMenu />
         <LogMenu />
         <DataMenu />
@@ -93,29 +94,4 @@ var OtherMenu = React.createClass({
   }
 })
 
-
-var MyAwesomeReactComponent = React.createClass({
-
-    childContextTypes: {
-        muiTheme: React.PropTypes.object
-    },
-
-    getChildContext: function() {
-        return {
-            muiTheme: ThemeManager.getCurrentTheme()
-        };
-    },
-
-    render: function() {
-        return (
-            <RaisedButton label="Default" />
-            );
-    }
-
-});
-
-module.exports = {
-    MenuArea: MenuArea,
-    MyAwesomeReactComponent: MyAwesomeReactComponent,
-};
-
+//module.exports = MenuPanel;
